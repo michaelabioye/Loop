@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Name: A coding challenge</title>
+    <title>Loop: A coding challenge</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md" data-bs-theme="dark">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="/img/michael Abi ye (3)/9.png" height="33" /> App Name</a>
+                    <img src="/img/michael Abi ye (3)/9.png" height="33" /> Loop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@
                             <a class="nav-link active" href="/code.html">The Code</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://github.com/" target="blank">The Repo</a>
+                            <a class="nav-link" href="https://github.com/michaelabioye/Loop" target="blank">The Repo</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://michaelabioye.netlify.app" target="blank">Portfolio</a>
@@ -65,18 +65,110 @@
 
                 <pre class="line-numbers">
                     <code class="language-js">
-function displayMessage() {
-    let inputElement = document.getElementById('messageinput');
-    let message = inputElement.value
-    Swal.fire(
-        {
+                        //get the inputs
+function getValues() {
+    //get each &lt;input> by ID
+    let startInput = document.getElementById('startInput');
+    let endInput = document.getElementById('endInput');
+    // get the value out of the &lt;input>
+    let startNumber = parseInt(startInput.value);
+    let endNumber = parseInt(endInput.value);
+    //parseInt turns a string into a number
+
+    //if the input is not a number we get NAN 
+
+    // validate that the inputs are numbers
+    if (Number.isInteger(startNumber) && Number.isInteger(endNumber)) {
+
+        //after you know if the number are both integers you 
+        let generatedNumbers = generateNumbers(startNumber, endNumber);
+
+
+        //want to generate the numbers with function generateNumbers
+        displayNumbers(generatedNumbers);
+
+    } else {
+        //tell the user to enter valid numbers
+        Swal.fire({
             backdrop: false,
-            title: 'App Name',
-            text: message,
-        }
-    )
+            title: 'oops',
+            text: 'please enter valid start and end numbers',
+            icon: 'error',
+        });
+
+
+    }
+
+
+    // what do i do if theyre not numbers 
+
 
 }
+
+
+//generate some numbers
+function generateNumbers(start, end) {
+    //generate numbers between start and end
+    let numbers = [];
+
+
+    for (let i = start; i &lt; = end; i = i + 1) {
+        // if i is less than or equal to a hundred it will do whatever we 
+        // want it to in the curly bracket
+        // write down the number i is on
+        numbers.push(i);
+    }
+
+    return numbers;
+
+
+}
+
+
+//display the numbers on the page
+function displayNumbers(numbers) {
+
+    let tableHtml = '';
+
+
+
+    //go through each number in the array
+    for (let index = 0; index &lt; numbers.length; index = index + 1) {
+        //get one number out of the array
+        let currentNumber = numbers[index];
+        let className = '';
+
+        //figure out if current number is even or odd
+        if (currentNumber % 2 == 0) {
+            className = 'even';
+
+            //the number is even
+        } else {
+            //the number is odd
+            className = 'odd';
+
+        }
+
+
+
+        //write the Html for that number
+        tableHtml = tableHtml + `&lt;tr>&lt;td> class="${className}"> ${currentNumber}&lt;/td>&lt;/tr>`;
+    }
+
+
+    // create html for each number 
+    // after, put that html in the table 
+
+    let tableElement = document.getElementById('resultsTable');
+    //put that html in the table
+    tableElement.innerHTML = tableHtml;
+
+    //bold the even numbers
+    // figure out where to display them in the &lt;table> 
+
+
+}
+
                     </code>
                 </pre>
 
@@ -85,21 +177,94 @@ function displayMessage() {
 
             <div class="col-12 col-lg-4">
                 <h3> How it works</h3>
-                <p>The code is structured in one function</p>
+                <p>The code is structured in three functions.</p>
 
                 <h5>
-                    <code>displaymessage()</code>
+                    <code>getValues()</code>
                 </h5>
                 <p>
-                    the <code>displaymessage</code> function reads the text from the input and
-                    displays it in a sweet alert popup
+                    we want to go to our site.js page and extract the id's
+                    from our <code>input</code> elements that are located in our HTML. Our input elements located in our
+                    HTML have an ID of
+                    <code>startInput</code>
+                    and <code> endInput</code>. keying in <code>let startInput = document.getElementById
+                        ('startInput')</code> in our site.js allows us to extract the elements from HTML.
+
+                    After successfully extracting our elements, we then want to
+                    create new varialbes i.e. <code>let startNumber/let endNumber</code>
+                    = a function we call <code>parseInt</code>. parseInt turns the string of text
+                    into an integer. So now our string of text <code>startInput/endInput</code> will turn into numbers
+                    once
+                    we run and debug our js code to make sure we arent making any errors. If numbers arent entered we
+                    will get a <code>NAN</code> on either the <code>startNumber/endNumber</code>. If numbers are entered
+                    we
+                    then move to the next step that will validate if the inputs are integers. If the
+                    <code>startNumber/endNumber</code>
+                    are both integers, js will generate an array of numbers using the function
+                    <code>generateNumbers</code>. If one of the
+                    <code>startNumber/endNumber</code> comes
+                    back false, js will then show a pop up alerting the user to enter a valid startNumber and endNumber.
+                </p>
+                <hr />
+
+                <h5>
+                    <code>generateNumbers()</code>
+                </h5>
+                <p>
+                    Our next function is <code>generateNumbers</code>, once we know that both integers for
+                    <code>startNumber/endNumber</code> are true.
+                    <code>generateNumbers</code> will generate numbers between
+                    our <code>startInput</code> <code>endInput</code> to create an array of integers.
+                    The array of integers are based off of the loop function <code>for (let i = start; 
+                        i < = end; i = i + 1) numbers.push(i)}.
+                    </code>
+                    This means that as long as the starting value is less than or
+                    equal to the ending value, the loop will continue looping while adding plus one to the
+                    starting value after every loop cycle until the starting value
+                    is no longer less than the ending value. Once the loop is finished,
+                    and the numbers are generated into an array <code>[]</code>, that will complete the function
+                    <code>generateNumbers</code>. The generatedNumbers will be returned
+                    back to the function <code>getValue</code>, where they will now = the function
+                    <code>generateNumbers</code>(startNumber, endNumber).
+
+                </p>
+                <hr />
+                <h5>
+                    <code>displayNumbers() </code>
+                </h5>
+                <p>
+                    This is our final function in getting the numbers to
+                    display on the page. we can control the table on the html by
+                    writing <code>let tableHtml = '';</code>. This means the function
+                    <code> displayNumbers</code> will use the <code>table</code>
+                    tag that has been written for our HTML. To get our table to display
+                    the array of numbers between the <code>startNumber</code>, and the
+                    <code>endNumber</code>. We must first run another <code>loop</code>
+                    function. <code>for (let i = 0; i < numbers.length;
+                    i = i + 1)</code>. This means that the loop starts with i equaling 0
+                    and as long as the i (index) is less than the
+                    <code>numbers.length</code> (numbers.length being the array),
+                    the loop will continue cycling and through each cycle the Loop
+                    will add one to the index until the index is no longer less than
+                    the numbers in the array. Since we will be showing our even numbers
+                    in bold print on our HTML table, we will have to go a step further.
+                    To do this we will need to make another function where
+                    <code>currentNumber = number[index]</code> and the
+                    <code> className</code> will be assigned 'even' or 'odd'
+                    depending on whether the current number of the array has any
+                    remainder left after dividing the number by 2 using the modulus
+                    operator. Once we have given a <code>className</code> to both the even
+                    and odd numbers that makes up the array, we will write HTML for that number,
+                    since its not one specific number we will use the function
+                    <code>tableHtml = tableHtml + `<tr><td> class="
+                        ${className}"> ${currentNumber}
+                    </td></tr>`</code>. After we create the table in our js,
+                    we place that table in our HTML by letting our <code>table</code>
+                    element in HTML be extracted by its ID through js.
+
+
                 </p>
             </div>
-
-
-
-        </div>
-
         </div>
 
     </main>
