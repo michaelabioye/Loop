@@ -19,7 +19,7 @@
 
 </head>
 
-<body data-ma-theme="blue">
+<body data-ma-theme="blue" class="bg-body-secondary">
     <header>
         <nav class="navbar navbar-expand-md" data-bs-theme="dark">
             <div class="container">
@@ -176,6 +176,7 @@ function displayNumbers(numbers) {
             </div>
 
             <div class="col-12 col-lg-4">
+
                 <h3> How it works</h3>
                 <p>The code is structured in three functions.</p>
 
@@ -184,26 +185,31 @@ function displayNumbers(numbers) {
                 </h5>
                 <p>
                     we want to go to our site.js page and extract the id's
-                    from our <code>input</code> elements that are located in our HTML. Our input elements located in our
+                    from our <code>input</code> elements that are located in our HTML. Our input elements located in
+                    our
                     HTML have an ID of
                     <code>startInput</code>
                     and <code> endInput</code>. keying in <code>let startInput = document.getElementById
-                        ('startInput')</code> in our site.js allows us to extract the elements from HTML.
+                            ('startInput')</code> in our site.js allows us to extract the elements from HTML.
 
                     After successfully extracting our elements, we then want to
                     create new variables i.e. <code>let startNumber/let endNumber</code>
                     = a function we call <code>parseInt</code>. parseInt turns the string of text
-                    into an integer. So now our string of text <code>startInput/endInput</code> will turn into numbers
+                    into an integer. So now our string of text <code>startInput/endInput</code> will turn into
+                    numbers
                     once
-                    we run and debug our js code to make sure we arent making any errors. If numbers arent entered we
-                    will get a <code>NAN</code> on either the <code>startNumber/endNumber</code>. If numbers are entered
+                    we run and debug our js code to make sure we arent making any errors. If numbers arent entered
+                    we
+                    will get a <code>NAN</code> on either the <code>startNumber/endNumber</code>. If numbers are
+                    entered
                     we
                     then move to the next step that will validate if the inputs are integers. If the
                     <code>startNumber/endNumber</code>
                     are both integers, js will generate an array of numbers using the function
                     <code>generateNumbers</code>. If one of the
                     <code>startNumber/endNumber</code> comes
-                    back false, js will then show a pop up alerting the user to enter a valid startNumber and endNumber.
+                    back false, js will then show a pop up alerting the user to enter a valid startNumber and
+                    endNumber.
                 </p>
                 <hr />
 
@@ -216,8 +222,8 @@ function displayNumbers(numbers) {
                     <code>generateNumbers</code> will generate numbers between
                     our <code>startInput</code> <code>endInput</code> to create an array of integers.
                     The array of integers are based off of the loop function <code>for (let i = start; 
-                        i < = end; i = i + 1) numbers.push(i)}.
-                    </code>
+                            i < = end; i = i + 1) numbers.push(i)}.
+                        </code>
                     This means that as long as the starting value is less than or
                     equal to the ending value, the loop will continue looping while adding plus one to the
                     starting value after every loop cycle until the starting value
@@ -241,7 +247,7 @@ function displayNumbers(numbers) {
                     the array of numbers between the <code>startNumber</code>, and the
                     <code>endNumber</code>. We must first run another <code>loop</code>
                     function. <code>for (let i = 0; i < numbers.length;
-                    i = i + 1)</code>. This means that the loop starts with i equaling 0
+                        i = i + 1)</code>. This means that the loop starts with i equaling 0
                     and as long as the i (index) is less than the
                     <code>numbers.length</code> (numbers.length being the array),
                     the loop will continue cycling and through each cycle the Loop
@@ -257,11 +263,12 @@ function displayNumbers(numbers) {
                     and odd numbers that makes up the array, we will write HTML for that number,
                     since its not one specific number we will use the function
                     <code>tableHtml = tableHtml + `<tr><td> class="
-                        ${className}"> ${currentNumber}
-                    </td></tr>`</code>. After we create the table in our js,
+                            ${className}"> ${currentNumber}
+                        </td></tr>`</code>. After we create the table in our js,
                     we place that table in our HTML by letting our <code>table</code>
                     element in HTML be extracted by its ID through js.
                 </p>
+
             </div>
         </div>
 
